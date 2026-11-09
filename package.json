@@ -1,0 +1,15 @@
+{
+  "name": "acvaa-root",
+  "version": "1.0.0",
+  "description": "Run ACVAA Full Stack",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start": "concurrently -n \"BACKEND,FRONTEND,AI-SERVICE\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:ai\"",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:ai": "cd ai-service && venv\\Scripts\\python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
